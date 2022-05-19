@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html>
+<body onload="tableCreate()">
+
+
+<script>
+
+"use strict";
+
+let hour = 0;
+let minute = 0;
+let second = 0;
+let millisecond = 0;
+
+let cron;
+let ShowAnswer = false;
+
+function start() {
+  pause();
+  cron = setInterval(() => { timer(); }, 10);
+}
+
+function pause() {
+  clearInterval(cron);
+}
+
+function reset() {
+  hour = 0;
+  minute = 0;
+  second = 0;
+  millisecond = 0;
+  document.getElementById('hour').innerText = '00';
+  document.getElementById('minute').innerText = '00';
+  document.getElementById('second').innerText = '00';
+  document.getElementById('millisecond').innerText = '000';
+}
+
+function timer() {
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0;
+    second++;
+  }
+  if (second == 60) {
+    second = 0;
+    minute++;
+  }
+  if (minute == 60) {
+    minute = 0;
+    hour++;
+  }
+  document.getElementById('hour').innerText = returnData(hour);
+  document.getElementById('minute').innerText = returnData(minute);
+  document.getElementById('second').innerText = returnData(second);
+  document.getElementById('millisecond').innerText = returnData(millisecond);
+}
+
+function returnData(input) {
+  return input > 10 ? input : `0${input}`
+}
+
+const acuPointsDU = [];
+const acuPointsREN = [];
+const acuPointsEXTRAPOINTS = [];
+const acuPointsLU = [];
+const acuPointsLI = [];
+const acuPointsST = [];
+const acuPointsSP = [];
+const acuPointsHT = [];
+const acuPointsSI = [];
+const acuPointsBL = [];
+const acuPointsKI = [];
+const acuPointsPC = [];
+const acuPointsSJ = [];
+const acuPointsGB = [];
+const acuPointsLR = [];
+
+// 9
+acuPointsDU[0] = {id:0, Channel:"DU", ChannelNumber:3 , Name:"Yaoyangguan",Specialty:"None", Description:"on the midline of the lower back, in the depression  below the spinous process of L4"};
+acuPointsDU[1] = {id:1, Channel:"DU", ChannelNumber:4 , Name:"Mingmen",Specialty:"None", Description:"On the midline of the lower back, in the depression below the spinous process of L2"};
+acuPointsDU[2] = {id:2, Channel:"DU", ChannelNumber:12 , Name:"Shenzhu",Specialty:"None", Description:"On the midline of the upper back, in the depression below  the spinous process of the T3"};
+acuPointsDU[3] = {id:3, Channel:"DU", ChannelNumber:14 , Name:"Dazhui",Specialty:"Meeting point of the Governing vessel with the six yang channels of the hand and foot", Description:" On the midline at the base of the neck, in the depression below the spinous process of the C7"};
+acuPointsDU[4] = {id:4, Channel:"DU", ChannelNumber:15 , Name:"Yamen",Specialty:"None", Description:" On the midline at the nape of the neck, in the depression 0.5 cun inferior to Fengfu DU 16, above the spinous process of C2"};
+acuPointsDU[5] = {id:5, Channel:"DU", ChannelNumber:16 , Name:"Fengfu",Specialty:"None", Description:"On the midline at the nape of the neck, in the depression immediately below the external occipital protuberance"};
+acuPointsDU[6] = {id:6, Channel:"DU", ChannelNumber:20 , Name:"Baihui",Specialty:"Meeting point of the Governing vessel with the Bladder, Gall Bladder, Sanjiao and Liver channels", Description:"At the vertex on the midline, in the depression 5 cun posterior to the anterior hairline"};
+acuPointsDU[7] = {id:7, Channel:"DU", ChannelNumber:23 , Name:"shangxing",Specialty:"None", Description:"On the midline of the head, 1 cun posterior to the anterior hairline"};
+acuPointsDU[8] = {id:8, Channel:"DU", ChannelNumber:26 , Name:"shuigou",Specialty:"None", Description:"Above the upper lip on the midline, at the junction of the upper third and lower two thirds of the philtrum • Also commonly known as Ren zhong (Man’s middle)"};
+
+// 13
+acuPointsREN[0] = {id:0, Channel:"REN", ChannelNumber:3 , Name:"Zhongji",Specialty:"Front-Mu point of the Bladder Meeting point of the Conception vessel with three foot yin channels", Description:"On the midline of the lower abdomen, 4 cun inferior to the umbilicus and 1 cun superior to the pubic symphysis"};
+acuPointsREN[1] = {id:1, Channel:"REN", ChannelNumber:4 , Name:"Guanyuan",Specialty:"Front-Mu point of the Small Intestine Meeting point of the Conception vessel with three foot yin channels", Description:"On the midline of the lower abdomen, 3 cun inferior to the umbilicus and 2 cun superior to the pubic symphysis"};
+acuPointsREN[2] = {id:2, Channel:"REN", ChannelNumber:5 , Name:"Shimen",Specialty:"None", Description:"On the midline of the lower abdomen, 2 cun inferior to the umbilicus and 3 cun superior to the pubic symphysis"};
+acuPointsREN[3] = {id:3, Channel:"REN", ChannelNumber:6 , Name:"Qihai",Specialty:"None", Description:"On the midline of the lower abdomen, 1.5 cun inferior to the umbilicus and 3.5 cun superior to the pubic symphysis"};
+acuPointsREN[4] = {id:4, Channel:"REN", ChannelNumber:8 , Name:"Shenque",Specialty:"None", Description:"In the centre of the umbilicus"};
+acuPointsREN[5] = {id:5, Channel:"REN", ChannelNumber:9 , Name:"Shuifen",Specialty:"None", Description:"On the midline of the abdomen, 1 cun above the umbilicus and 7 cun below the sternocostal angle"};
+acuPointsREN[6] = {id:6, Channel:"REN", ChannelNumber:10 , Name:"Xiawan",Specialty:"None", Description:"On the midline of the abdomen, 2 cun above the umbilicus and 6 cun below the sternocostal angle"};
+acuPointsREN[7] = {id:7, Channel:"REN", ChannelNumber:12 , Name:"Zhongwan",Specialty:"Front-Mu point of the Stomach, Hui-Meeting point of the Fu", Description:"On the midline of the abdomen, 4 cun above the umbilicus and midway between the umbilicus and the sternocostal angle"};
+acuPointsREN[8] = {id:8, Channel:"REN", ChannelNumber:14 , Name:"Juque",Specialty:"None", Description:"On the midline of the abdomen, 6 cun above the umbilicus and 2 cun below the sternocostal angle"};
+acuPointsREN[9] = {id:9, Channel:"REN", ChannelNumber:15, Name:"Jiuwei",Specialty:"None", Description:"On the midline of the abdomen, 7 cun above the umbilicus and 1 cun below the level of the sternocostal angle"};
+acuPointsREN[10] = {id:10, Channel:"REN", ChannelNumber:17 , Name:"Tanzhong",Specialty:"None", Description:"On the midline of the sternum, in a depression level with the junction of the fourth intercostal space and the sternum"};
+acuPointsREN[11] = {id:11, Channel:"REN", ChannelNumber:22 , Name:"Tiantu",Specialty:"None", Description:"On the midline, in the centre of the suprasternal fossa"};
+acuPointsREN[12] = {id:12, Channel:"REN", ChannelNumber:24 , Name:"Chengjiang",Specialty:"None", Description:": Above the chin, in the depression in the centre of the mentolabial groove"};
+
+// 12
+acuPointsEXTRAPOINTS[0] = {id:0, Channel:"Extra M-HN", ChannelNumber:1 , Name:"SISHENCONG",Specialty:"Extraordinary acupoints", Description:"Four points at the vertex of the scalp, grouped around Baihui DU-20 and located 1 cun anterior, posterior and lateral to it"};
+acuPointsEXTRAPOINTS[1] = {id:1, Channel:"Extra M-HN", ChannelNumber:3 , Name:"YINTANG",Specialty:"Extraordinary acupoints", Description:"At the glabella, at the midpoint between the medial extremities of the eyebrows"};
+acuPointsEXTRAPOINTS[2] = {id:2, Channel:"Extra M-HN", ChannelNumber:9 , Name:"TAIYANG",Specialty:"Extraordinary acupoints", Description:"At the temple, in the tender depression approximately 1 cun posterior to the midpoint between the lateral extremity of the eyebrow and the outer canthus of the eye."};
+acuPointsEXTRAPOINTS[3] = {id:3, Channel:"Extra M-HN", ChannelNumber:10 , Name:"ERJIAN",Specialty:"Extraordinary acupoints", Description:"When the ear is folded forwards, this point lies at the apex of the ear."};
+acuPointsEXTRAPOINTS[4] = {id:4, Channel:"Extra M-BW", ChannelNumber:1 , Name:"DINGCHUAN",Specialty:"Extraordinary acupoints", Description:"0.5 to 1 cun lateral to the depression below the spinous process of the seventh cervical vertebra (Dazhui DU-14)"};
+acuPointsEXTRAPOINTS[5] = {id:5, Channel:"Extra M-BW", ChannelNumber:35 , Name:"HUATUOJIAJI",Specialty:"Extraordinary acupoints", Description:"0.5 to 1 cun lateral to the depressions below the spinous processes of the twelve thoracic and five lumbar vertebrae."};
+acuPointsEXTRAPOINTS[6] = {id:6, Channel:"Extra MN-LE", ChannelNumber:16 , Name:"XIYAN",Specialty:"Extraordinary acupoints", Description:"On the knee, in the hollows formed when the knee is flexed, immediately below the patella and both medial and lateral to the patellar ligament."};
+acuPointsEXTRAPOINTS[7] = {id:7, Channel:"Extra MN-LE", ChannelNumber:34 , Name:"BAICHONGWO",Specialty:"Extraordinary acupoints", Description:"3 cun proximal to the superior border of the patella, in a tender depression on the bulge of the vastus medialis muscle."};
+acuPointsEXTRAPOINTS[8] = {id:8, Channel:"Extra MN-LE", ChannelNumber:13 , Name:"LANWEIXUE",Specialty:"Extraordinary acupoints", Description:"Approximately 2 cun distal to Zusanli ST-36 on the right leg."};
+acuPointsEXTRAPOINTS[9] = {id:9, Channel:"Extra MN-LE", ChannelNumber:23 , Name:"DANNANGXUE",Specialty:"Extraordinary acupoints", Description:"Between 1 and 2 cun distal to Yanglingquan GB-34 on the right leg."};
+acuPointsEXTRAPOINTS[10] = {id:10, Channel:"Extra UE", ChannelNumber:19 , Name:"YAOTONGXUE",Specialty:"Extraordinary acupoints", Description:"On the dorsum of the hand, two points located between the second and third and the fourth and fifth metacarpal bones, in the depressions lying immediately distal to the bases of the metacarpals."};
+acuPointsEXTRAPOINTS[11] = {id:11, Channel:"Extra UW", ChannelNumber:24 , Name:"LUOZHEN",Specialty:"Extraordinary acupoints", Description:"On the dorsum of the hand, in the depression just proximal to the second and third metacarpophalangeal Joints"};
+
+// 6
+acuPointsLU[0] = {id:0, Channel:"LU", ChannelNumber:5 , Name:"Chize",Specialty:"He-sea and Water point of the Lung channel", Description:"On the cubital crease of the elbow, in the depression at the radial side of the tendon of biceps brachii"};
+acuPointsLU[1] = {id:1, Channel:"LU", ChannelNumber:6 , Name:"Kongzui",Specialty:"Xi-cleft point point of the Lung channel", Description:": On the flexor aspect of the forearm, 7 cun proximal to Taiyuan LU 9, on the line connecting Taiyuan LU 9 with Chize LU 5"};
+acuPointsLU[2] = {id:2, Channel:"LU", ChannelNumber:7 , Name:"Lieque",Specialty:"Luo-connecting point of the Lung channel, Confluent point of the Conception vessel", Description:"on the radial aspect of the forearm, between the tendons of abductor pollicis longus and extensor pollicis brevis muscles in the groove of abductor pollicis longus tendon, 1.5 cun superior to the wrist crease"};
+acuPointsLU[3] = {id:3, Channel:"LU", ChannelNumber:8 , Name:"Jinqu",Specialty:"Jing-river and Metal point of the Lung channel", Description:" on the anteromedial aspect of the forearm between the radial styloid process and the radial artery, 1 cun superior to the palmar wrist crease"};
+acuPointsLU[4] = {id:4, Channel:"LU", ChannelNumber:9 , Name:"Taiyuan",Specialty:"Shu-stream, Yuan-source and Earth point of the Lung channel Hui-Meeting point of the Vessels", Description:": At the wrist joint, in the depression between the radial artery and the tendon of abductor pollicis longus, level with Shenmen HT 7 (the proximal border of the pisiform bone)"};
+acuPointsLU[5] = {id:5, Channel:"LU", ChannelNumber:10 , Name:"Yuji",Specialty:"Ying-spring and Fire point of the Lung channel", Description:": On the thenar eminence of the hand, in a depression between the midpoint of the shaft of the first metacarpal bone and the thenar muscles"};
+
+// 9
+acuPointsLI[0] = {id:0, Channel:"LI", ChannelNumber:1 , Name:"Shangyang",Specialty:"Jing-Well and Metal point of the Large Intestine channel", Description:"On the dorsal aspect of the index finger, at the junction of lines drawn along the radial border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+acuPointsLI[1] = {id:1, Channel:"LI", ChannelNumber:2 , Name:"Erjin",Specialty:"Ying-Spring and Water point of the Large Intestine channel", Description:"on the radial border of the index finger, in a depression just distalto the metacarpo-phalangeal joint"};
+acuPointsLI[2] = {id:2, Channel:"LI", ChannelNumber:3 , Name:"Sanjian",Specialty:"Yuan-Source point of the Large Intestine channel", Description:"on the dorsum of the hand, between the first and second metacarpal bones, at the midpoint of the second metacarpal bone and close to its radial border."};
+acuPointsLI[3] = {id:3, Channel:"LI", ChannelNumber:4 , Name:"Hegu",Specialty:"Jing-River and Fire point of the Large Intestine channe", Description:""};
+acuPointsLI[4] = {id:4, Channel:"LI", ChannelNumber:5 , Name:"Yangxi",Specialty:"Jing-River and Fire point of the Large Intestine channel", Description:"On the radial side of the wrist, in the centre of the hollow formed by the tendons of extensor pollicis longus and brevis (anatomical snuffbox)"};
+acuPointsLI[5] = {id:5, Channel:"LI", ChannelNumber:6 , Name:"Pianli",Specialty:"Luo-Connecting point of the Large Intestine channel", Description:" 3 cun proximal to Yangxi LI 5 on the line connecting Yangxi LI 5 with Quchi LI 11"};
+acuPointsLI[6] = {id:6, Channel:"LI", ChannelNumber:7 , Name:"Wenliu",Specialty:"Xi-Cleft point of the Large Intestine channel", Description:"5 cun proximal to Yangxi LI 5 on the line connecting Yangxi LI 5 with Quchi LI 11"};
+acuPointsLI[7] = {id:7, Channel:"LI", ChannelNumber:11 , Name:"Quchi",Specialty:"He-Sea and Earth point of the Large Intestine channel", Description:"At the elbow, midway between Chize LU 5 and the lateral epicondyle of the humerus, at the lateral end of the transverse cubital crease"};
+acuPointsLI[8] = {id:8, Channel:"LI", ChannelNumber:18 , Name:"Futu",Specialty:"None", Description:"On the lateral side of the neck, level with the tip of the laryngeal prominence, between the sternal and clavicular heads of the sternocleidomastoid muscle"};
+
+// 12
+acuPointsST[0] = {id:0, Channel:"ST", ChannelNumber:9 , Name:"Renying",Specialty:"None", Description:" Level with the tip of the laryngeal prominence, in the depression between the anterior border of the sternocleidomastoid muscle and the lateral border of the thyroid cartilage"};
+acuPointsST[1] = {id:1, Channel:"ST", ChannelNumber:25 , Name:"Tianshu",Specialty:"Front-Mu point of the Large Intestine", Description:"On the abdomen, 2 cun lateral to the umbilicus"};
+acuPointsST[2] = {id:2, Channel:"ST", ChannelNumber:34 , Name:"Liangqiu",Specialty:"Xi-Cleft point of the Stomach channel", Description:": On the thigh, on a line drawn between the lateral border of the patella and the anterior superior iliac spine, in a depression 2 cun proximal to the superior border of the patella"};
+acuPointsST[3] = {id:3, Channel:"ST", ChannelNumber:36 , Name:"Zusanli",Specialty:"He-Sea and Earth point of the Stomach channel", Description:"Below the knee, 3 cun inferior to Dubi ST 35, one fingerbreadth lateral to the anterior crest of the tibia"};
+acuPointsST[4] = {id:4, Channel:"ST", ChannelNumber:37, Name:"Shangjuxu",Specialty:"Lower He-Sea point of the Large Intestine", Description:"On the lower leg, 3 cun inferior to Zusanli ST 36, one finger-breadth lateral to the anterior crest of the tibia"};
+acuPointsST[5] = {id:5, Channel:"ST", ChannelNumber:39, Name:"Xiajuxu",Specialty:"Lower He-Sea point of the Small Intestine", Description:"On the lower leg, 3 cun inferior to Shangjuxu ST 37, one finger-breadth lateral to the anterior crest of the tibia"};
+acuPointsST[6] = {id:6, Channel:"ST", ChannelNumber:40, Name:"Fenglong",Specialty:"Luo-Connecting point of the Stomach channel", Description:": On the lower leg, midway between the tibiofemoral joint line (level with the popliteal crease) and the lateral malleolus, two finger-breadths lateral to the anterior crest of the tibia (i.e. one finger-breadth lateral to Tiaokou ST 38)"};
+acuPointsST[7] = {id:7, Channel:"ST", ChannelNumber:41 , Name:"Jiexi",Specialty:"Jing-River and Fire point of the Stomach channel", Description:":On the ankle, level with the prominence of the lateral malleolus, in a depression between the tendons of extensor hallucis longus and extensor digitorum longus"};
+acuPointsST[8] = {id:8, Channel:"ST", ChannelNumber:42 , Name:"Chongyang",Specialty:"Yuan-Source point of the Stomach channel", Description:" On the dorsum of the foot, in the depression formed by the junction of the second and third metatarsal bones and the cuneiform bones (second and third), at the point where the pulsation of the dorsalis pedis artery may be palpated. The highest point of the dorsum of foot"};
+acuPointsST[9] = {id:9, Channel:"ST", ChannelNumber:43 , Name:"Xiangu",Specialty:"Shu-Stream and Wood point of the Stomach channel", Description:"On the dorsum of the foot, between the second and third metatarsal bones, in a depression 1 cun proximal to Neiting ST 44"};
+acuPointsST[10] = {id:10, Channel:"ST", ChannelNumber:44 , Name:"Neiting",Specialty:"Ying-Spring and Water point of the Stomach channe", Description:"On the dorsum of the foot, between the second and third toes, 0.5 cun proximal to the margin of the web"};
+acuPointsST[11] = {id:11, Channel:"ST", ChannelNumber:45 , Name:"Lidui",Specialty:"Jing-Well and Metal point of the Stomach channel", Description:"On the dorsal aspect of the second toe, at the junction of lines drawn along the lateral border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+
+// 10
+acuPointsSP[0] = {id:0, Channel:"SP", ChannelNumber:1 , Name:"Yinbai",Specialty:"Jing-Well and Wood point of the Spleen channe", Description:":On the dorsal aspect of the big toe, at the junction of lines drawn along the medial border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+acuPointsSP[1] = {id:1, Channel:"SP", ChannelNumber:2 , Name:"Dadu",Specialty:"Ying-Spring and Fire point of the Spleen channel", Description:"on the medial side of the big toe, in the depression distal and inferior to the first metatarso-phalangeal joint"};
+acuPointsSP[2] = {id:2, Channel:"SP", ChannelNumber:3 , Name:"Taibai",Specialty:"Shu-Stream, Yuan-Source and Earth point of the Spleen channel", Description:"On the medial side of the foot in the depression proximal and inferior to the head of the first metatarsal bone"};
+acuPointsSP[3] = {id:3, Channel:"SP", ChannelNumber:4 , Name:"Gongsun",Specialty:"Luo-Connecting point of the Spleen channel Confluent point of the Penetrating vessel", Description:"On the medial side of the foot, in the depression distal and inferior to the base of the first metatarsal bone"};
+acuPointsSP[4] = {id:4, Channel:"SP", ChannelNumber:5 , Name:"Shangqiu",Specialty:"Jing-River and Metal point of the Spleen channel", Description:" on the medial aspect of the foot, anteroinferior to the medial malleolus in the depresion midway between the tuberosity of the navicular bone and the prominence of the medial malleolus"};
+acuPointsSP[5] = {id:5, Channel:"SP", ChannelNumber:6 , Name:"Sanyinjiao",Specialty:"Meeting point of the Spleen, Liver and Kidney channels", Description:"on the medial side of the lower leg, 3 cun superior to the prominence of the medial malleolus, in a depression close to the medial crest of the tibia"};
+acuPointsSP[6] = {id:6, Channel:"SP", ChannelNumber:8 , Name:"Diji",Specialty:"Xi-Cleft point of the Spleen channel", Description:"On the medial side of the lower leg, 3 cun inferior to Yinlingquan SP 9, in a depression just posterior to the medial crest of the tibia"};
+acuPointsSP[7] = {id:7, Channel:"SP", ChannelNumber:9 , Name:"Yinlingquan",Specialty:"He-Sea and Water point of the Spleen channel", Description:" on the medial side of the lower leg, in a depression in the angle formed by the medial condyle of the tibia and the posterior border of the tibia."};
+acuPointsSP[8] = {id:8, Channel:"SP", ChannelNumber:10 , Name:"Xuehai",Specialty:"None", Description:"2 cun proximal to the superior border of the patella, in the tender depression on the bulge of the vastus medialis muscle, directly above Yinlingquan SP 9"};
+acuPointsSP[9] = {id:9, Channel:"SP", ChannelNumber:21 , Name:"Dabao",Specialty:"Great Luo-Connecting point of the Spleen", Description:"On the mid-axillary line, in the 6th intercostal space"};
+
+// 7
+acuPointsHT[0] = {id:0, Channel:"HT", ChannelNumber:3 , Name:"Shaohai",Specialty:"He-Sea and Water point of the Heart channel", Description:"Midway between Quze PC 3 and the medial epicondyle of the humerus, at the medial end of the transverse cubital crease when the elbow is fully flexed."};
+acuPointsHT[1] = {id:1, Channel:"HT", ChannelNumber:4 , Name:"Lingdao",Specialty:"Jing-River and Metal point of the Heart channel", Description:" On the radial side of the tendon of flexor carpi ulnaris, 1.5 cun proximal to Shenmen HT 7"};
+acuPointsHT[2] = {id:2, Channel:"HT", ChannelNumber:5 , Name:"Tongli",Specialty:"Luo-Connecting point of the Heart channel", Description:"On the radial side of the tendon of flexor carpi ulnaris, 1 cun proximal to Shenmen HT 7"};
+acuPointsHT[3] = {id:3, Channel:"HT", ChannelNumber:6 , Name:"Yinxi",Specialty:"Xi-Cleft point of the Heart channel", Description:":On the radial side of the tendon of flexor carpi ulnaris, 0.5 cun proximal to Shenmen HT 7"};
+acuPointsHT[4] = {id:4, Channel:"HT", ChannelNumber:7 , Name:"Shenmen",Specialty:"Shu-Stream, Yuan-Source and Earth point of the Heart channel", Description:"At the wrist joint, on the radial side of flexor carpi ulnaris, in the depression at the proximal border of the pisiform bone"};
+acuPointsHT[5] = {id:5, Channel:"HT", ChannelNumber:8 , Name:"Shaofu",Specialty:"Ying-Spring and Fire point of the Heart channel", Description:"On the palm, in the depression between the 4th and 5th metacarpal bones, where the tip of the little finger rests when a fist is made"};
+acuPointsHT[6] = {id:6, Channel:"HT", ChannelNumber:9 , Name:"Shaochong",Specialty:"Jing-Well and Wood point of the Heart channel", Description:": On the dorsal aspect of the little finger, at the junction of lines drawn along the radial border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+
+// 9
+acuPointsSI[0] = {id:0, Channel:"SI", ChannelNumber:1 , Name:"Shaoze",Specialty:"Jing-Well and Metal point of the Small Intestine channel", Description:" On the dorsal aspect of the little finger, at the junction of lines drawn along the ulnar border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+acuPointsSI[1] = {id:1, Channel:"SI", ChannelNumber:3 , Name:"Houxi",Specialty:"Shu-Stream and Wood point of the Small Intestine channel Confluent point of the Governing vessel", Description:"On the ulnar border of the hand, in the substantial depression proximal to the head of the fifth metacarpal bone"};
+acuPointsSI[2] = {id:2, Channel:"SI", ChannelNumber:4 , Name:"Wangu",Specialty:"Yuan-Source point of the Small Intestine channel", Description:" On the ulnar border of the hand, in the depression between the base of the fifth metacarpal bone and the triquetral bone"};
+acuPointsSI[3] = {id:3, Channel:"SI", ChannelNumber:5 , Name:"Yanggu",Specialty:"Jing-River and Fire point of the Small Intestine channel", Description:"At the ulnar border of the wrist, in the depression between the head of the ulna and the triquetral bone"};
+acuPointsSI[4] = {id:4, Channel:"SI", ChannelNumber:6 , Name:"Yanglao",Specialty:"Xi-Cleft point of the Small Intestine channel", Description:"When the palm of the hand is placed on the chest, this point is located on the dorsal aspect of the head of the ulna, in a cleft level with and to the radial side of the high point of the styloid process of the ulna"};
+acuPointsSI[5] = {id:5, Channel:"SI", ChannelNumber:7 , Name:"Zhizheng",Specialty:"Luo-Connecting point of the Small Intestine channe", Description:"On a line connecting Yanggu SI 5 and Xiaohai SI 8, 5 cun proximal to Yanggu SI 5, in the groove between the anterior border of the ulna and the muscle belly of flexor carpi ulnaris"};
+acuPointsSI[6] = {id:6, Channel:"SI", ChannelNumber:8 , Name:"Xiaohai",Specialty:"He-Sea and Earth point of the Small Intestine channel", Description:"In the depression between the tip of the olecranon process of the ulna and the tip of the medial epicondyle of the humerus"};
+acuPointsSI[7] = {id:7, Channel:"SI", ChannelNumber:16 , Name:"Tianchuang",Specialty:"None", Description:" On the posterior border of the sternocleidomastoid muscle, level with the laryngeal prominence"};
+acuPointsSI[8] = {id:8, Channel:"SI", ChannelNumber:18 , Name:"Quanliao",Specialty:"None", Description:"Directly below the outer canthus, in the depression at the lower border of the zygomatic bone"};
+
+// 28
+acuPointsBL[0] = {id:0, Channel:"BL", ChannelNumber:11 , Name:"Dazhu",Specialty:"Hui-meeting point of bone", Description:"1.5 cun lateral to the lower border of the spinous process of the first thoracic vertebra (T1)"};
+acuPointsBL[1] = {id:1, Channel:"BL", ChannelNumber:12 , Name:"Fengmen",Specialty:"none", Description:"1.5 cun lateral to the lower border of the spinous process of the second thoracic vertebra (T2)"};
+acuPointsBL[2] = {id:2, Channel:"BL", ChannelNumber:13 , Name:"Feishu",Specialty:"Back-Shu point of the Lung", Description:"1.5 cun lateral to the lower border of the spinous process of the third thoracic vertebra (T3)"};
+acuPointsBL[3] = {id:3, Channel:"BL", ChannelNumber:14 , Name:"Jueyinshu",Specialty:"Back-Shu point of the Pericardium", Description:"1.5 cun lateral to the lower border of the spinous process of the fourth thoracic vertebra (T4)"};
+acuPointsBL[4] = {id:4, Channel:"BL", ChannelNumber:15 , Name:"Xinshu",Specialty:"Back-Shu point of the Heart", Description:"1.5 cun lateral to the lower border of the spinous process of the fifth thoracic vertebra (T5)."};
+acuPointsBL[5] = {id:5, Channel:"BL", ChannelNumber:17 , Name:"Geshu",Specialty:"Hui-Meeting point of Blood", Description:"1.5 cun lateral to the lower border of the spinous process of the seventh thoracic vertebra (T7)"};
+acuPointsBL[6] = {id:6, Channel:"BL", ChannelNumber:18 , Name:"Ganshu",Specialty:"Back-Shu point of the Liver", Description:"1.5 cun lateral to the lower border of the spinous process of the ninth thoracic vertebra (T9)"};
+acuPointsBL[7] = {id:7, Channel:"BL", ChannelNumber:19 , Name:"Danshu",Specialty:"Back-Shu point of the Gall Bladder", Description:"1.5 cun lateral to the lower border of the spinous process of the tenth thoracic vertebra (T10)"};
+acuPointsBL[8] = {id:8, Channel:"BL", ChannelNumber:20 , Name:"Pishu",Specialty:"Back-Shu point of the Spleen", Description:"1.5 cun lateral to the lower border of the spinous process of the eleventh thoracic vertebra (T11)"};
+acuPointsBL[9] = {id:9, Channel:"BL", ChannelNumber:21 , Name:"Weishu",Specialty:"Back-Shu point of the Stomach", Description:"1.5 cun lateral to the lower border of the spinous process of the twelfth thoracic vertebra (T12)."};
+acuPointsBL[10] = {id:10, Channel:"BL", ChannelNumber:22 , Name:"Sanjiaoshu",Specialty:"Back-Shu point of the Sanjiao", Description:"1.5 cun lateral to the lower border of the spinous process of the first lumbar vertebra (L 1)."};
+acuPointsBL[11] = {id:11, Channel:"BL", ChannelNumber:23 , Name:"Shenshu",Specialty:"Back-Shu point of the Kidneys", Description:"1.5 cun lateral to the lower border of the spinous process of the second lumbar vertebra"};
+acuPointsBL[12] = {id:12, Channel:"BL", ChannelNumber:24 , Name:"Qihaishu",Specialty:"none", Description:"1.5 cun lateral to the lower border of the spinous process of the third lumbar vertebra (L3)"};
+acuPointsBL[13] = {id:13, Channel:"BL", ChannelNumber:25 , Name:"Dachangshu",Specialty:"Back-Shu point of the Large Intestine", Description:"1.5 cun lateral to the lower border of the spinous process of the fourth lumbar vertebra (L4). L4 at the same level with the top of iliac creast"};
+acuPointsBL[14] = {id:14, Channel:"BL", ChannelNumber:26, Name:"Guanyuanshu",Specialty:"none", Description:" 1.5 cun lateral to the lower border of the spinous process of the fifth lumbar vertebra (L5)"};
+acuPointsBL[15] = {id:15, Channel:"BL", ChannelNumber:27 , Name:"Xiaochangshu",Specialty:"Back-Shu point of the Small Intestine", Description:"1.5 cun lateral to the midline, at the level of the first posterior sacral foramen"};
+acuPointsBL[16] = {id:16, Channel:"BL", ChannelNumber:28 , Name:"Pangguanshu",Specialty:"Back-Shu point of the Bladder", Description:"1.5 cun lateral to the midline, at the level of a the second posterior sacral foramen. "};
+acuPointsBL[17] = {id:17, Channel:"BL", ChannelNumber:39 , Name:"Weiyang",Specialty:"Lower he-sea point of Sanjiao", Description:" At the back of the knee, on the popliteal crease and towards its lateral end, in the depression medial to the tendon of biceps femoris"};
+acuPointsBL[18] = {id:18, Channel:"BL", ChannelNumber:40 , Name:"Weizhong",Specialty:"He-sea and earth point of the bladder channel", Description:"At the back of knee, on the popliteal crease, in a depression midway between the tendons of biceps femoris and semitendinosus. Locate with the knee slightly flexed"};
+acuPointsBL[19] = {id:19, Channel:"BL", ChannelNumber:58 , Name:"Feiyang",Specialty:"Luo-connecting point of the bladder channel", Description:" one the lower leg, 7 cun directly superior to Kunlun BL 60, lateral to and about 1 cun inferior to Chengshan BL 57"};
+acuPointsBL[20] = {id:20, Channel:"BL", ChannelNumber:59 , Name:"Fuyang",Specialty:"Xi-Cleft point of yang motility vessel", Description:"On the lower leg, 3 cun directly superior to Kunlun BL 60"};
+acuPointsBL[21] = {id:21, Channel:"BL", ChannelNumber:60 , Name:"Kunlun",Specialty:"Jing-river and fire point of the Bladder channel", Description:"Behind the ankle joint, in the depression between the prominence of lateral malleolous and the Achilles tendon"};
+acuPointsBL[22] = {id:22, Channel:"BL", ChannelNumber:62 , Name:"Shenmai",Specialty:"Confluent point of the yang motility vesse", Description:"On the lateral side of the foot, about 0.5 cun inferior to the inferior border of the lateral malleolus, in a depression posterior to the peroneal tendons"};
+acuPointsBL[23] = {id:23, Channel:"BL", ChannelNumber:63 , Name:"Jinmen",Specialty:"Xi-Cleft point of the Bladder channel", Description:": On the lateral side of the foot, in the depression posterior to the tuberosity of the 5th metatarsal bone. Landmark: the tuberosity of the 5th metatarsal bone"};
+acuPointsBL[24] = {id:24, Channel:"BL", ChannelNumber:64 , Name:"Jinggu",Specialty:"Yuan-source point of the Bladder channel", Description:"On the lateral side of the foot, in the depression anterior and inferior to tuberosity of the 5th metatarsal bone"};
+acuPointsBL[25] = {id:25, Channel:"BL", ChannelNumber:65 , Name:"Shugu",Specialty:"Shu-stream and wood point of the Bladder channel", Description:": On the lateral side of the foot, in the depression posterior and inferior to the head of the 5th metatarsal bone"};
+acuPointsBL[26] = {id:26, Channel:"BL", ChannelNumber:66 , Name:"Zutonggu",Specialty:"Ying-spring and water point of the Bladder channel", Description:"On the lateral side of the foot, in the depression anterior and interior to the 5th metatarsophalangeal joint "};
+acuPointsBL[27] = {id:27, Channel:"BL", ChannelNumber:67 , Name:"Zhiyin",Specialty:"Jing-well and metal point of the channel", Description:"On the dorsal aspect of the little toe, approximately 0.1 cun from the corner of the nail."};
+
+// 10
+acuPointsKI[0] = {id:0, Channel:"KI", ChannelNumber:1 , Name:"Yongquan",Specialty:"Jing-well and wood point of the kidney channel", Description:"On the sole of the foot, between 2nd-3rd metatarsal bones, approximately one third of the distance between the base of the second toe and the heel, in a depression formed when the foot is plantar flexed."};
+acuPointsKI[1] = {id:1, Channel:"KI", ChannelNumber:2 , Name:"Rangu",Specialty:"Ying-Spring and Fire point of the Kidney channel", Description:"On the medial side of the foot, in the depression distal and inferior to the navicular tuberosity"};
+acuPointsKI[2] = {id:2, Channel:"KI", ChannelNumber:3 , Name:"Taixi",Specialty:"Shu-Stream, Yuan-Source and Earth point of the Kidney channel", Description:" In the depression between the medial malleolus and the Achilles tendon, level with the prominence of the medial malleolus"};
+acuPointsKI[3] = {id:3, Channel:"KI", ChannelNumber:4 , Name:"Dazhong",Specialty:"Luo-Connecting point of the Kidney channel", Description:"Approximately 0.5 cun posterior to the midpoint of the line drawn between Taixi KI 3 and Shuiquan KI 5, on the anterior border of the Achilles tendon"};
+acuPointsKI[4] = {id:4, Channel:"KI", ChannelNumber:5 , Name:"Shuiquan",Specialty:"Xi-Cleft point of the Kidney channe", Description:"1 cun inferior to Taixi KID-3 in a depression anterior and superior to the calcaneal tuberosity"};
+acuPointsKI[5] = {id:5, Channel:"KI", ChannelNumber:6 , Name:"Zhaohai",Specialty:"Confluent point of the Yin Motility vessel", Description:"1 cun below the prominence of the medial malleolus, in the groove formed by two ligaments"};
+acuPointsKI[6] = {id:6, Channel:"KI", ChannelNumber:7 , Name:"Fuliu",Specialty:"ling-River and Metal point of the Kidney channel", Description:"On the medial aspect of the lower leg, in the depression 2 cun superior to Taixi KI 3, on the anterior border of the Achilles tendon"};
+acuPointsKI[7] = {id:7, Channel:"KI", ChannelNumber:8 , Name:"Jiaoxin",Specialty:"Xi-Cleft point of the Yin Motility vessel", Description:"On the medial aspect of the lower leg, 2 cun superior to Taixi KI 3 and 0.5 cun anterior to Fuliu KI 7, posterior to the medial border of the tibia"};
+acuPointsKI[8] = {id:8, Channel:"KI", ChannelNumber:9 , Name:"Zhubin",Specialty:"Xi-Cleft point of the Yin Linking vessel", Description:"On the medial aspect of the lower leg, 5 cun superior to Taixi KI 3, on the line drawn between Taixi KID3 and Yingu KI 10"};
+acuPointsKI[9] = {id:9, Channel:"KI", ChannelNumber:10 , Name:"Yingu",Specialty:"He-Sea and water point of the Kidney channel", Description:"At the medial end of the popliteal crease, between the semitendinosus and semimembranosus tendons. Locate and needle with the knee slightly flexed."};
+
+// 8
+acuPointsPC[0] = {id:0, Channel:"PC", ChannelNumber:1 , Name:"Tianchi",Specialty:"None", Description:"1 cun lateral and slightly superior to the nipple, in the 4th intercostal space，5 cun lateral to the midline"};
+acuPointsPC[1] = {id:1, Channel:"PC", ChannelNumber:3 , Name:"Quze",Specialty:"He-Sea and water point of the Pericardium channel", Description:"On the transverse cubital crease, in the depression immediately to the ulnar side of the biceps brachii tendon"};
+acuPointsPC[2] = {id:2, Channel:"PC", ChannelNumber:4 , Name:"Ximen",Specialty:"Xi-Cleft point of the Pericardium channel", Description:"On the flexor aspect of the forearm, 5 cun proximal to the wrist crease, on the line connecting Daling PC 7 and Quze PC 3, between the tendons of palmaris longus and flexor carpi radialis"};
+acuPointsPC[3] = {id:3, Channel:"PC", ChannelNumber:5 , Name:"Jianshi",Specialty:"Jing-River and Metal point of the Pericardium channel", Description:"On the flexor aspect of the forearm, 3 cun proximal to Daling PC 7, between the tendons of palmaris longus ,and flexor carpi radialis"};
+acuPointsPC[4] = {id:4, Channel:"PC", ChannelNumber:6 , Name:"Neiguan",Specialty:"Luo-Connecting point of the Pericardium channel Confluent point of the Yin Linking vessel", Description:"On the flexor aspect of the forearm, 2 cun proximal to Daling P-7, between the tendons of palmaris longus and flexor carpi radialis"};
+acuPointsPC[5] = {id:5, Channel:"PC", ChannelNumber:7 , Name:"Daling",Specialty:"Shu-Stream, Yuan-Source and Earth point of the Pericardium channe", Description:"On the wrist crease, between the tendons of palmaris longus and flexor carpi radialis"};
+acuPointsPC[6] = {id:6, Channel:"PC", ChannelNumber:8 , Name:"Laogong",Specialty:"Ying-Spring and fire point of the Pericardium channel", Description:"Between the second and third metacarpal bones, proximal to the metacarpo-phalangeal joint, in a depression at the radial side of the third metacarpal bone"};
+acuPointsPC[7] = {id:7, Channel:"PC", ChannelNumber:9 , Name:"Zhongchong",Specialty:"Jing- Well and Wood point of the Pericardium channel", Description:": In the centre of the tip of the middle finger"};
+
+// 10
+acuPointsSJ[0] = {id:0, Channel:"SJ", ChannelNumber:1 , Name:"Guanchong",Specialty:"Jing-Well and metal point of the Sanjiao channel", Description:"On the dorsal aspect of the ring finger, at the ulnar side of the nail corner"};
+acuPointsSJ[1] = {id:1, Channel:"SJ", ChannelNumber:2 , Name:"Yemen",Specialty:"Ying-Spring and water point of the Sanjiao channe", Description:"Between the ring and little fingers, 0.5 cun proximal to the margin of the web"};
+acuPointsSJ[2] = {id:2, Channel:"SJ", ChannelNumber:3 , Name:"Zhongzhu",Specialty:"Shu-Stream and wood point of the Sanjiao channel", Description:"On the dorsum of the hand, in the depression just proximal to the fourth and fifth metacarpo-phalangeal joints"};
+acuPointsSJ[3] = {id:3, Channel:"SJ", ChannelNumber:4 , Name:"Yangchi",Specialty:"Yuan-Source point of the Sanjiao channel", Description:"On the dorsum of the wrist, at the level of the wrist joint, in the depression between the tendons of extensor digitorum communis and extensor digiti minimi"};
+acuPointsSJ[4] = {id:4, Channel:"SJ", ChannelNumber:5 , Name:"Waiguan",Specialty:"Luo-Connecting point of the Sanjiao channel Confluent point of the Yang Linking vessel", Description:"2 cun proximal to Yangchi SJ4, in the depression between the radius and the ulna bone"};
+acuPointsSJ[5] = {id:5, Channel:"SJ", ChannelNumber:6 , Name:"Zhigou",Specialty:"Jing-River and fire point of the Sanjiao channel", Description:"3 cun proximal to Yangchi SJ 4, in the depression between the radius and the ulna, on the radial side of the extensor digitorum communis muscle"};
+acuPointsSJ[6] = {id:6, Channel:"SJ", ChannelNumber:7 , Name:"Huizong",Specialty:"Xi-Cleft point of the Sanjiao channel", Description:"3 cun proximal to Yangchi SJ 4, level with and on the ulnar side of Zhigou SJ 6, in the depression between the ulna side and the extensor digitorum communis muscle"};
+acuPointsSJ[7] = {id:7, Channel:"SJ", ChannelNumber:8 , Name:"Sanyangluo",Specialty:"None", Description:"4 cun proximal to Yangchi SJ-4, in the depression between the radius and the ulna bone"};
+acuPointsSJ[8] = {id:8, Channel:"SJ", ChannelNumber:10 , Name:"Tianjing",Specialty:"He-Sea and earth point of the Sanjiao channel", Description:"With the elbow flexed, this point is located in the depression 1 cun proximal to the olecranon"};
+acuPointsSJ[9] = {id:9, Channel:"SJ", ChannelNumber:16 , Name:"Tianyou",Specialty:"None", Description:"At the level of the angle of the mandible, in the depression posterior to the sternocleidomastoid muscle"};
+
+// 12
+acuPointsGB[0] = {id:0, Channel:"GB", ChannelNumber:24 , Name:"Riyue",Specialty:"Front-Mu point of the Gallbladder", Description:"On the anterior chest wall, in the 7th intercostal space, directly below the nipple, 4 cun lateral to the midline"};
+acuPointsGB[1] = {id:1, Channel:"GB", ChannelNumber:25 , Name:"Jingmen",Specialty:"Front-Mu point of the Kidney", Description:"Below the lateral aspect of the ribcage, anterior and inferior to the free end of the 12th rib"};
+acuPointsGB[2] = {id:2, Channel:"GB", ChannelNumber:34 , Name:"Yanglingquan",Specialty:"He-Sea and earth point of the Gallbladder channel Hui-meeting point of sinews", Description:"Below the lateral aspect of the knee, in the tender depression approximately 1 cun anterior and inferior to the head of the fibula"};
+acuPointsGB[3] = {id:3, Channel:"GB", ChannelNumber:35 , Name:"Yangjiao",Specialty:"Xi-cleft point of the yang linking vessel", Description:"On the lateral aspect of the lower leg, 7 cun superior to the lateral malleolus, in the depression at the posterior border of the fibula"};
+acuPointsGB[4] = {id:4, Channel:"GB", ChannelNumber:36 , Name:"Waiqiu",Specialty:"Xi-cleft point of the Gallbladder channel", Description:"On the lateral aspect of the lower leg, 7 cun superior to the prominence of the lateral malleolus, at the anterior border of the fibula"};
+acuPointsGB[5] = {id:5, Channel:"GB", ChannelNumber:37 , Name:"Guangming",Specialty:"Luo-connecting point of the Gallbladder channel", Description:"On the lateral aspect of the lower leg, 5 cun superior to the prominence of the lateral malleolus, at the anterior border of the fibula"};
+acuPointsGB[6] = {id:6, Channel:"GB", ChannelNumber:38 , Name:"Yangfu",Specialty:"Jing-River and Fire point of the Gallbladder channel", Description:"On the lateral aspect of the lower leg, 4 cun superior to the prominence of the lateral malleolus, at the anterior border of the fibula"};
+acuPointsGB[7] = {id:7, Channel:"GB", ChannelNumber:39 , Name:"Xuanzhong",Specialty:"Hui-Meeting point for marrow", Description:"On the leg anterior to the fibula, 3 cun proximal to the prominence of lateral malleolus"};
+acuPointsGB[8] = {id:8, Channel:"GB", ChannelNumber:40 , Name:"Qiuxu",Specialty:"Yuan-Source point of the Gallbladder channel", Description:"At the ankle joint, in the depression anterior and inferior to the lateral malleolus"};
+acuPointsGB[9] = {id:9, Channel:"GB", ChannelNumber:41 , Name:"Zulingqi",Specialty:"Shu-Stream and wood point of the Gallbladder channel Confluent point of the girdling vessel", Description:"In the depression distal to the junction of the 4th and 5th metatarsal bones, on the lateral side of the tendon of m. extensor digitorum longus (branch to little toe)"};
+acuPointsGB[10] = {id:10, Channel:"GB", ChannelNumber:43 , Name:"Xiaxi",Specialty:"Ying-Spring and water point of the Gallbladder channel", Description:"Between the fourth toe and the little toe, 0.5 cun proximal to the margin of the web"};
+acuPointsGB[11] = {id:11, Channel:"GB", ChannelNumber:44 , Name:"Zuqiaoyin",Specialty:"Jing-Well and metal point of the Gallbladder channel", Description:"On the dorsal aspect of the 4th toe, at the junction of lines drawn along the lateral border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+
+// 9
+acuPointsLR[0] = {id:0, Channel:"LR", ChannelNumber:1 , Name:"Dadun",Specialty:"Jing-Well and wood point of the Liver channel", Description:"On the dorsal aspect of the big toe, at the junction of lines drawn along the lateral border of the nail and the base of the nail, approximately 0.1 cun from the corner of the nail"};
+acuPointsLR[1] = {id:1, Channel:"LR", ChannelNumber:2 , Name:"Xingjian",Specialty:"Ying-Spring and fire point of the Liver channel", Description:"On the dorsum of the foot, between the first and second toes, 0.5 cun proximal to the margin of the web"};
+acuPointsLR[2] = {id:2, Channel:"LR", ChannelNumber:3 , Name:"Taichong",Specialty:"Shu-Stream, Yuan-Source and Earth point of the Liver channel", Description:"On the dorsum of the foot, in the hollow distal to the junction of the first and second metatarsal bones"};
+acuPointsLR[3] = {id:3, Channel:"LR", ChannelNumber:4 , Name:"Zhongfeng",Specialty:"Jing-River and Metal point of the Liver channel", Description:"on the ankle, anterior to the prominence of the medial malleolus, in the significant depression just medial to the tendon of tibialis anterior when the ankle is dorsiflexed"};
+acuPointsLR[4] = {id:4, Channel:"LR", ChannelNumber:5 , Name:"Ligou",Specialty:"Luo-Connecting point of the Liver channel", Description:"5 cun above the prominence of the medial malleolus, immediately posterior to the medial crest of the tibia, in the depression between the medial crest of the tibia and the gastrocnemius muscle • Chinese acupuncture textbook location: at the centre of the medial border of the tibia, 5 cun above the prominence of the medial malleolus"};
+acuPointsLR[5] = {id:5, Channel:"LR", ChannelNumber:6 , Name:"Zhongdu",Specialty:"", Description:""};
+acuPointsLR[6] = {id:6, Channel:"LR", ChannelNumber:8 , Name:"Ququan",Specialty:"He-Sea and Water point of the Liver channel", Description:"Just superior to the medial end of the popliteal crease, in the depression anterior to the tendons of m.semitendinosus and m.semimembranosus, about 1 cun anterior to Yingu KI 10"};
+acuPointsLR[7] = {id:7, Channel:"LR", ChannelNumber:13, Name:"Zhangmen",Specialty:"Front-Mu point of the Spleen, Hui-Meeting point of the zang", Description:"Directly anterior and inferior to the free end of the eleventh rib"};
+acuPointsLR[8] = {id:8, Channel:"LR", ChannelNumber:14 , Name:"Qimen",Specialty:"Front-Mu point of the Liver", Description:"On the mid-clavicular line, in the sixth intercostal space, 4 cun lateral to the midline."};
+
+const allAcuPoints = [
+	acuPointsDU,
+	acuPointsREN,
+	acuPointsEXTRAPOINTS,
+	acuPointsLU,
+	acuPointsLI,
+	acuPointsST,
+	acuPointsSP,
+	acuPointsHT,
+	acuPointsSI,
+	acuPointsBL,
+	acuPointsKI,
+	acuPointsPC,
+	acuPointsSJ,
+	acuPointsGB,
+	acuPointsLR
+	];
+
+const acuPointsExam = [];
+const acuPointsNumberInExam = 21;
+
+function countdownTimeStart()
+{
+	alert("Exam Finished.");
+}
+
+function getRandomIntInclusive(min, max) {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min) + min); //The maximum is inclusive and the minimum is inclusive
+}
+
+function showAnswer(){
+	ShowAnswer = true;
+	var element = document.getElementById("tableOne");
+	if(element)
+		element.remove();
+	tableCreate();
+}
+
+function tableCreate() {
+	if(!ShowAnswer)
+	{
+		for(let j = 0; j < allAcuPoints.length; j++)
+		{
+			var tempChannel = allAcuPoints[j];
+			var tempAcuPointsSelected = [];
+			var selectionCount = 0;
+			if(tempChannel.length <= 10)
+				selectionCount = 1;
+			else if(tempChannel.length > 20)
+				selectionCount = 3;
+			else 
+				selectionCount = 2;
+			for(let k = 0; k < selectionCount; k++)
+			{
+				var randomSelect = getRandomIntInclusive(0,tempChannel.length);			
+				acuPointsExam.push(tempChannel[randomSelect]);
+				tempChannel.splice(randomSelect,1);
+			}		
+		}
+	}	
+	const body = document.body,
+	tbl = document.createElement('table');
+	tbl.setAttribute("id", "tableOne")
+	tbl.style.border = '1px solid black';
+
+	for (let i = 0; i < acuPointsExam.length; i++) {
+		var tr = tbl.insertRow();
+		var td = tr.insertCell();
+		if(ShowAnswer)
+		{
+			td.appendChild(document.createTextNode(acuPointsExam[i].Channel + '-' + acuPointsExam[i].ChannelNumber + ' ' + acuPointsExam[i].Name));
+			var td2 = tr.insertCell();
+			td2.appendChild(document.createTextNode(acuPointsExam[i].Specialty));
+			td2.style.border = '1px solid black';
+			var td3 = tr.insertCell();
+			td3.appendChild(document.createTextNode(acuPointsExam[i].Description));
+			td3.style.border = '1px solid black';
+		}
+		else
+			td.appendChild(document.createTextNode(acuPointsExam[i].Channel + '-' + acuPointsExam[i].ChannelNumber + ' ' + acuPointsExam[i].Name));
+		td.style.border = '1px solid black';
+	}
+	body.appendChild(tbl);
+	
+	if(!ShowAnswer)
+	{
+		document.form_main.start.onclick = () => start();
+		document.form_main.pause.onclick = () => pause();
+		document.form_main.reset.onclick = () => reset();
+		document.form_main.showAnswer.onclick = () => showAnswer();
+	}
+}
+
+</script>
+
+
+<h2>CMS 1 Mock Pratical Exam</h2>
+<!--button onclick="setTimeout(countdownTimeStart, 2000 * 60 * 10)" name="StartTimer">
+  Start Timer
+</button-->
+
+<form name="form_main">
+  <div>
+    <span id="hour">00</span>:<span id="minute">00</span>:<span id="second">00</span>:<span id="millisecond">000</span>
+  </div>
+
+  <br />
+
+  <button type="button" name="start">start</button>
+  <button type="button" name="pause">pause</button>
+  <button type="button" name="reset">reset</button>
+  <button type="button" name="showAnswer">Show Answer</button>
+</form>
+
+
+</body></html>
